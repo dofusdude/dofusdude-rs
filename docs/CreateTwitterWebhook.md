@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **whitelist** | Option<**Vec<String>**> |  | [optional]
 **blacklist** | Option<**Vec<String>**> |  | [optional]
-**subscriptions** | **Vec<String>** | Get the available subscriptions with /meta/webhooks/twitter | 
-**format** | **String** |  | 
+**subscriptions** | **HashSet<String>** | Get the available subscriptions with /meta/webhooks/twitter | 
+**format** | **Format** |  (enum: discord) | 
 **preview_length** | Option<**i32**> |  | [optional]
 **callback** | **String** | Discord Webhook URL | 
 

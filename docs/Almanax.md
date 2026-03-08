@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**bonus** | Option<[**models::AlmanaxBonus**](Almanax_bonus.md)> |  | [optional]
+**bonus** | Option<[**models::AlmanaxBonus**](AlmanaxBonus.md)> |  | [optional]
 **date** | Option<**String**> |  | [optional]
-**tribute** | Option<[**models::AlmanaxTribute**](Almanax_tribute.md)> |  | [optional]
+**tribute** | Option<[**models::AlmanaxTribute**](AlmanaxTribute.md)> |  | [optional]
 **reward_kamas** | Option<**i32**> | Amount of Kamas you get as reward for finishing this Almanax quest. | [optional]
 **reward_xp** | Option<**i32**> | Optional field that shows when a level is given in the request. Shows the experience points you get this day for finishing this Almanax quest. | [optional]
 

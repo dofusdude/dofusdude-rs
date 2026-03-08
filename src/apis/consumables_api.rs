@@ -67,7 +67,7 @@ pub async fn get_all_items_consumables_list(configuration: &configuration::Confi
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref param_value) = p_query_sort_left_square_bracket_level_right_square_bracket {
-        req_builder = req_builder.query(&[("sort[level]", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("sort[level]", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_filter_left_square_bracket_min_level_right_square_bracket {
         req_builder = req_builder.query(&[("filter[min_level]", &param_value.to_string())]);
@@ -130,7 +130,7 @@ pub async fn get_items_consumables_list(configuration: &configuration::Configura
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref param_value) = p_query_sort_left_square_bracket_level_right_square_bracket {
-        req_builder = req_builder.query(&[("sort[level]", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("sort[level]", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_filter_left_square_bracket_min_level_right_square_bracket {
         req_builder = req_builder.query(&[("filter[min_level]", &param_value.to_string())]);

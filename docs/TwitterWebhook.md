@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | Option<[**uuid::Uuid**](uuid::Uuid.md)> |  | [optional]
+**id** | Option<**uuid::Uuid**> |  | [optional]
 **whitelist** | Option<**Vec<String>**> |  | [optional]
 **blacklist** | Option<**Vec<String>**> |  | [optional]
 **subscriptions** | Option<**Vec<String>**> |  | [optional]
-**format** | Option<**String**> |  | [optional]
+**format** | Option<**Format**> |  (enum: discord) | [optional]
 **preview_length** | Option<**i32**> |  | [optional]
 **created_at** | Option<**String**> |  | [optional]
 **last_fired_at** | Option<**String**> |  | [optional]

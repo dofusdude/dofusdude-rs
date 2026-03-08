@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **whitelist** | Option<**Vec<String>**> |  | [optional]
 **blacklist** | Option<**Vec<String>**> |  | [optional]
 **subscriptions** | Option<**Vec<String>**> |  | [optional]
-**format** | Option<**String**> |  | [optional]
+**format** | Option<**Format**> |  (enum: discord) | [optional]
 **preview_length** | Option<**i32**> |  | [optional]
 **created_at** | Option<**String**> |  | [optional]
 **last_fired_at** | Option<**String**> |  | [optional]

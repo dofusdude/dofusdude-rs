@@ -68,7 +68,7 @@ pub async fn get_all_sets_list(configuration: &configuration::Configuration, lan
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref param_value) = p_query_sort_left_square_bracket_level_right_square_bracket {
-        req_builder = req_builder.query(&[("sort[level]", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("sort[level]", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_filter_left_square_bracket_min_highest_equipment_level_right_square_bracket {
         req_builder = req_builder.query(&[("filter[min_highest_equipment_level]", &param_value.to_string())]);
@@ -132,7 +132,7 @@ pub async fn get_sets_list(configuration: &configuration::Configuration, languag
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref param_value) = p_query_sort_left_square_bracket_level_right_square_bracket {
-        req_builder = req_builder.query(&[("sort[level]", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("sort[level]", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_filter_left_square_bracket_min_highest_equipment_level_right_square_bracket {
         req_builder = req_builder.query(&[("filter[min_highest_equipment_level]", &param_value.to_string())]);
