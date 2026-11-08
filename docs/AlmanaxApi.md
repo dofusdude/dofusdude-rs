@@ -22,7 +22,7 @@ Get a single date. There are not more details in the returned object than the no
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **language** | **String** | code | [required] |
-**date** | **String** | yyyy-mm-dd | [required] |
+**date** | **chrono::NaiveDate** | yyyy-mm-dd | [required] |
 **level** | Option<**i32**> | character level for the reward_xp field |  |
 
 ### Return type
@@ -55,8 +55,8 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **language** | **String** | code | [required] |
 **filter_left_square_bracket_bonus_type_right_square_bracket** | Option<**String**> | ids from meta/{language}/almanax/bonuses |  |
-**range_left_square_bracket_from_right_square_bracket** | Option<**String**> | yyyy-mm-dd |  |
-**range_left_square_bracket_to_right_square_bracket** | Option<**String**> | yyyy-mm-dd |  |
+**range_left_square_bracket_from_right_square_bracket** | Option<**chrono::NaiveDate**> | yyyy-mm-dd |  |
+**range_left_square_bracket_to_right_square_bracket** | Option<**chrono::NaiveDate**> | yyyy-mm-dd |  |
 **range_left_square_bracket_size_right_square_bracket** | Option<**i32**> | Size of the returned range. Disable to fully use the range by setting size to -1. |  |
 **timezone** | Option<**String**> | determine what the current time is. If you live in Brazil, \"today\" will be hours apart from Paris. Use your timezone to get results relative to your location. |  |[default to Europe/Paris]
 **level** | Option<**i32**> | character level for the reward_xp field |  |

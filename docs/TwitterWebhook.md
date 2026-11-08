@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 **subscriptions** | Option<**Vec<String>**> |  | [optional]
 **format** | Option<**Format**> |  (enum: discord) | [optional]
 **preview_length** | Option<**i32**> |  | [optional]
-**created_at** | Option<**String**> |  | [optional]
-**last_fired_at** | Option<**String**> |  | [optional]
-**updated_at** | Option<**String**> |  | [optional]
+**created_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
+**last_fired_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
+**updated_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

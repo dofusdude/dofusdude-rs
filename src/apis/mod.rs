@@ -116,6 +116,7 @@ pub mod consumables_api;
 pub mod cosmetics_api;
 pub mod equipment_api;
 pub mod game_api;
+pub mod game_data_api;
 pub mod meta_api;
 pub mod mounts_api;
 pub mod quest_items_api;

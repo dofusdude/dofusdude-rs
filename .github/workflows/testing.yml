@@ -1,13 +1,18 @@
 name: Rust CI
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
+      - beta
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
+      - beta
 jobs:
   rust-stable-test:
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
       - name: Test
         run: cargo test --verbose
-
