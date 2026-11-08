@@ -20,7 +20,7 @@ pub struct MonsterSpellRelationship {
     /// The spell grade assigned to this monster grade.
     #[serde(rename = "grade")]
     pub grade: i32,
-    /// Grade-specific spell URL; already includes the `grade` query parameter.
+    /// URL for the assigned spell grade. Includes the `grade` query parameter.
     #[serde(rename = "url")]
     pub url: String,
     #[serde(rename = "image_urls", skip_serializing_if = "Option::is_none")]

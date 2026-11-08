@@ -18,7 +18,7 @@ pub struct EffectZone {
     pub raw: Option<String>,
     #[serde(rename = "shape")]
     pub shape: Box<models::ZoneShape>,
-    /// Effective outer size of the area. A point has size 0; whole-map and custom-cell shapes omit it.
+    /// Effective outer size of the area. A point has size 0. Whole-map and custom-cell shapes omit it.
     #[serde(rename = "size", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub size: Option<Option<i32>>,
     /// Effective inner size for hollow or minimum-size shapes. Omitted when the shape has no inner boundary.

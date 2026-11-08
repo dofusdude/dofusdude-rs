@@ -11,6 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
+/// Spell : A spell with its available grades, effects and casting rules.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Spell {
     #[serde(rename = "ankama_id")]
@@ -42,6 +43,7 @@ pub struct Spell {
 }
 
 impl Spell {
+    /// A spell with its available grades, effects and casting rules.
     pub fn new(ankama_id: i32, name: String, levels: Vec<models::SpellLevel>) -> Spell {
         Spell {
             ankama_id,

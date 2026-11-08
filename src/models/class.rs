@@ -11,6 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
+/// Class : A playable class with its characteristics, appearance and class spell assignments.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Class {
     #[serde(rename = "ankama_id")]
@@ -42,6 +43,7 @@ pub struct Class {
 }
 
 impl Class {
+    /// A playable class with its characteristics, appearance and class spell assignments.
     pub fn new(ankama_id: i32, name: String, looks: models::ClassLooks, spells: Vec<models::Spell>) -> Class {
         Class {
             ankama_id,

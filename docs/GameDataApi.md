@@ -101,7 +101,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **game** | **String** |  | [required] |
 **language** | **String** |  | [required] |
-**include** | Option<**String**> | Controls monster spell relationships. By default each monster grade contains a compact relationship whose URL selects the assigned spell grade. `spells.grade` inlines that grade only; `spells` inlines the complete spell with every available grade. |  |
+**include** | Option<**String**> | Optional spell expansion for monster responses. Leave include unset to return spell URLs. Use `spells.grade` to embed the assigned spell grade. Use `spells` to embed every available grade of each assigned spell. |  |
 
 ### Return type
 
@@ -343,7 +343,7 @@ Name | Type | Description  | Required | Notes
 **game** | **String** |  | [required] |
 **language** | **String** |  | [required] |
 **ankama_id** | **i32** |  | [required] |
-**include** | Option<**String**> | Controls monster spell relationships. By default each monster grade contains a compact relationship whose URL selects the assigned spell grade. `spells.grade` inlines that grade only; `spells` inlines the complete spell with every available grade. |  |
+**include** | Option<**String**> | Optional spell expansion for monster responses. Leave include unset to return spell URLs. Use `spells.grade` to embed the assigned spell grade. Use `spells` to embed every available grade of each assigned spell. |  |
 
 ### Return type
 
@@ -376,7 +376,7 @@ Name | Type | Description  | Required | Notes
 **page_left_square_bracket_number_right_square_bracket** | Option<**i32**> |  |  |[default to 1]
 **page_left_square_bracket_size_right_square_bracket** | Option<**i32**> |  |  |[default to 20]
 **fields_left_square_bracket_monsters_right_square_bracket** | Option<**String**> |  |  |
-**include** | Option<**String**> | Controls monster spell relationships. By default each monster grade contains a compact relationship whose URL selects the assigned spell grade. `spells.grade` inlines that grade only; `spells` inlines the complete spell with every available grade. |  |
+**include** | Option<**String**> | Optional spell expansion for monster responses. Leave include unset to return spell URLs. Use `spells.grade` to embed the assigned spell grade. Use `spells` to embed every available grade of each assigned spell. |  |
 
 ### Return type
 

@@ -11,6 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
+/// Monster : A monster with its grades, family, spawn locations and drops. Spell expansion is optional.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Monster {
     #[serde(rename = "ankama_id")]
@@ -52,6 +53,7 @@ pub struct Monster {
 }
 
 impl Monster {
+    /// A monster with its grades, family, spawn locations and drops. Spell expansion is optional.
     pub fn new(ankama_id: i32, name: String, race: models::MonsterRace, grades: Vec<models::MonsterGrade>, spawn_locations: Vec<models::MonsterSpawnLocation>, drops: Vec<models::MonsterDrop>) -> Monster {
         Monster {
             ankama_id,
