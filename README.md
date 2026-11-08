@@ -60,7 +60,7 @@ dofusdude = { path = "./dofusdude" }
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.dofusdu.de*
+All URIs are relative to *https://beta.api.dofusdu.de*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
