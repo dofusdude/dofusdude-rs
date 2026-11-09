@@ -42,6 +42,7 @@ pub struct SpellScriptUsage {
     pub targets_affected_concurrently: Option<bool>,
     #[serde(rename = "target_treated_as_caster", skip_serializing_if = "Option::is_none")]
     pub target_treated_as_caster: Option<bool>,
+    /// Spell-level definition IDs to which this script binding applies. Match SpellLevel.ankama_id, not Spell.ankama_id or SpellLevel.grade.
     #[serde(rename = "spell_level_ids", skip_serializing_if = "Option::is_none")]
     pub spell_level_ids: Option<Vec<i32>>,
 }

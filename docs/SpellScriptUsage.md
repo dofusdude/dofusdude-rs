@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **condition** | Option<**std::collections::HashMap<String, serde_json::Value>**> |  | [optional]
 **targets_affected_concurrently** | Option<**bool**> |  | [optional]
 **target_treated_as_caster** | Option<**bool**> |  | [optional]
-**spell_level_ids** | Option<**Vec<i32>**> |  | [optional]
+**spell_level_ids** | Option<**Vec<i32>**> | Spell-level definition IDs to which this script binding applies. Match SpellLevel.ankama_id, not Spell.ankama_id or SpellLevel.grade. | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

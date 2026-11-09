@@ -37,7 +37,7 @@ pub struct Class {
     pub image_urls: Option<Box<models::Images>>,
     #[serde(rename = "looks")]
     pub looks: Box<models::ClassLooks>,
-    /// Fully mapped class spells, including levels, effects, targeting, and zones.
+    /// Full spell definitions assigned to this playable class, including their own grades, effects and targeting. A class has no monster-grade dimension. The same spells are independently available from the spells endpoint.
     #[serde(rename = "spells")]
     pub spells: Vec<models::Spell>,
 }

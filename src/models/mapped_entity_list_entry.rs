@@ -11,6 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
+/// MappedEntityListEntry : Compact collection summary. A missing detail field here does not mean the resource lacks that data. Request the single-record endpoint or the collection's full fields to obtain details.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct MappedEntityListEntry {
     #[serde(rename = "ankama_id")]
@@ -22,6 +23,7 @@ pub struct MappedEntityListEntry {
 }
 
 impl MappedEntityListEntry {
+    /// Compact collection summary. A missing detail field here does not mean the resource lacks that data. Request the single-record endpoint or the collection's full fields to obtain details.
     pub fn new(ankama_id: i32, name: String) -> MappedEntityListEntry {
         MappedEntityListEntry {
             ankama_id,

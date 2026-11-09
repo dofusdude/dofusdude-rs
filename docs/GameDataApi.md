@@ -407,7 +407,7 @@ Name | Type | Description  | Required | Notes
 **game** | **String** |  | [required] |
 **language** | **String** |  | [required] |
 **ankama_id** | **i32** |  | [required] |
-**grade** | Option<**i32**> | Return only the requested mapped spell grade in `levels`. |  |
+**grade** | Option<**i32**> | Select the spell variant identified by its explicit grade number, not its spell-level record ID or a player level. Returns the spell object with only that grade in levels. An unavailable grade returns 404. |  |
 
 ### Return type
 

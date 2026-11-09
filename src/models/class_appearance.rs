@@ -11,6 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
+/// ClassAppearance : Structured client appearance data for an asset renderer. Bone and skin IDs are not image URLs. Use the parent record's image_urls for ready-to-display artwork.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ClassAppearance {
     #[serde(rename = "bones_id")]
@@ -24,6 +25,7 @@ pub struct ClassAppearance {
 }
 
 impl ClassAppearance {
+    /// Structured client appearance data for an asset renderer. Bone and skin IDs are not image URLs. Use the parent record's image_urls for ready-to-display artwork.
     pub fn new(bones_id: i32, skin_ids: Vec<i32>, scale_percent: models::ClassAppearanceScalePercent, default_colors: Vec<i32>) -> ClassAppearance {
         ClassAppearance {
             bones_id,

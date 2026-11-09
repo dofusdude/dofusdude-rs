@@ -11,18 +11,31 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
+/// SpellLevel : One grade of a spell. The levels array contains these spell variants, not player levels. Grade numbers are local to the containing spell and are independent of monster grades.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct SpellLevel {
+    /// ID of the spell-level definition. Different from the parent spell ID and from the grade number. Used by explicit spell-level references such as script spell_level_ids.
     #[serde(rename = "ankama_id", skip_serializing_if = "Option::is_none")]
     pub ankama_id: Option<i32>,
+    /// Number identifying this variant within its spell. Select by this value, not by the array position. Used by the spell detail endpoint's grade parameter.
     #[serde(rename = "grade", skip_serializing_if = "Option::is_none")]
     pub grade: Option<i32>,
+    /// Action points required to cast this spell grade.
     #[serde(rename = "ap_cost", skip_serializing_if = "Option::is_none")]
     pub ap_cost: Option<i32>,
+    /// Base critical-hit percentage recorded for this spell grade, before fighter-specific modifiers.
+    #[serde(rename = "critical_hit_probability", skip_serializing_if = "Option::is_none")]
+    pub critical_hit_probability: Option<i32>,
+    /// Player-level requirement recorded for this spell grade. This is not its grade number or a monster combat level.
+    #[serde(rename = "min_player_level", skip_serializing_if = "Option::is_none")]
+    pub min_player_level: Option<i32>,
+    /// Minimum casting range in combat cells.
     #[serde(rename = "min_range", skip_serializing_if = "Option::is_none")]
     pub min_range: Option<i32>,
+    /// Maximum casting range in combat cells as defined by this grade.
     #[serde(rename = "max_range", skip_serializing_if = "Option::is_none")]
     pub max_range: Option<i32>,
+    /// Per-caster cast limit within a turn as recorded by the source.
     #[serde(rename = "max_cast_per_turn", skip_serializing_if = "Option::is_none")]
     pub max_cast_per_turn: Option<i32>,
     #[serde(rename = "max_cast_per_target", skip_serializing_if = "Option::is_none")]
@@ -31,8 +44,10 @@ pub struct SpellLevel {
     pub max_global_cast_per_turn: Option<i32>,
     #[serde(rename = "max_global_cast_per_target", skip_serializing_if = "Option::is_none")]
     pub max_global_cast_per_target: Option<i32>,
+    /// Minimum interval between casts, measured in fight turns.
     #[serde(rename = "min_cast_interval", skip_serializing_if = "Option::is_none")]
     pub min_cast_interval: Option<i32>,
+    /// Initial wait before casting, measured in fight turns.
     #[serde(rename = "initial_cooldown", skip_serializing_if = "Option::is_none")]
     pub initial_cooldown: Option<i32>,
     #[serde(rename = "global_cooldown", skip_serializing_if = "Option::is_none")]
@@ -41,18 +56,29 @@ pub struct SpellLevel {
     pub ignore_prison_glyph: Option<bool>,
     #[serde(rename = "spell_breed", skip_serializing_if = "Option::is_none")]
     pub spell_breed: Option<i32>,
+    /// Available client-side state requirements for this spell grade. Null does not assert that the server imposes no restriction.
+    #[serde(rename = "states_criterion", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub states_criterion: Option<Option<Box<models::EligibilityNode>>>,
+    /// Client preview and activation geometry for this grade. Use each effect's zone for its actual effect-area definition.
+    #[serde(rename = "preview_zones", skip_serializing_if = "Option::is_none")]
+    pub preview_zones: Option<Vec<models::SpellPreviewZone>>,
+    /// Normal-cast effects for this grade. Each entry has independent targeting and area geometry.
     #[serde(rename = "effects", skip_serializing_if = "Option::is_none")]
     pub effects: Option<Vec<models::SpellEffect>>,
+    /// Critical-cast effects for this grade. Keep separate from normal effects rather than applying both arrays to every cast.
     #[serde(rename = "critical_effects", skip_serializing_if = "Option::is_none")]
     pub critical_effects: Option<Vec<models::SpellEffect>>,
 }
 
 impl SpellLevel {
+    /// One grade of a spell. The levels array contains these spell variants, not player levels. Grade numbers are local to the containing spell and are independent of monster grades.
     pub fn new() -> SpellLevel {
         SpellLevel {
             ankama_id: None,
             grade: None,
             ap_cost: None,
+            critical_hit_probability: None,
+            min_player_level: None,
             min_range: None,
             max_range: None,
             max_cast_per_turn: None,
@@ -64,6 +90,8 @@ impl SpellLevel {
             global_cooldown: None,
             ignore_prison_glyph: None,
             spell_breed: None,
+            states_criterion: None,
+            preview_zones: None,
             effects: None,
             critical_effects: None,
         }

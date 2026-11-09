@@ -11,6 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
+/// MonsterRace : Monster taxonomy. Race is the monster's family and super_race is the broader grouping. Neither is a playable class or a monster grade.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct MonsterRace {
     #[serde(rename = "ankama_id")]
@@ -22,6 +23,7 @@ pub struct MonsterRace {
 }
 
 impl MonsterRace {
+    /// Monster taxonomy. Race is the monster's family and super_race is the broader grouping. Neither is a playable class or a monster grade.
     pub fn new(ankama_id: i32, name: String, super_race: models::CombatReference) -> MonsterRace {
         MonsterRace {
             ankama_id,

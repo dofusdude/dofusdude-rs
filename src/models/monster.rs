@@ -22,10 +22,10 @@ pub struct Monster {
     pub image_urls: Option<Box<models::Images>>,
     #[serde(rename = "race")]
     pub race: Box<models::MonsterRace>,
-    /// Monster statistics and spells grouped by the monster grade that uses them.
+    /// Variants of this monster. Each has its own combat level, statistics and assigned spells. The monster grade number is not a spell grade number or combat level.
     #[serde(rename = "grades")]
     pub grades: Vec<models::MonsterGrade>,
-    /// Spawn subareas taken from the monster's authoritative subarea list.
+    /// Known spawn subareas and their geographic parents. This is not live population data or a per-map spawn probability. Maps listed within a subarea are not guaranteed individual spawn points.
     #[serde(rename = "spawn_locations")]
     pub spawn_locations: Vec<models::MonsterSpawnLocation>,
     #[serde(rename = "drops")]

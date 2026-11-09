@@ -11,6 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
+/// WeaponCombat : Weapon attack targeting and area geometry. Available for weapon equipment. This is separate from spell effect zones.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct WeaponCombat {
     #[serde(rename = "zone")]
@@ -24,6 +25,7 @@ pub struct WeaponCombat {
 }
 
 impl WeaponCombat {
+    /// Weapon attack targeting and area geometry. Available for weapon equipment. This is separate from spell effect zones.
     pub fn new(zone: models::EffectZone, cast_in_line: bool, cast_in_diagonal: bool, requires_line_of_sight: bool) -> WeaponCombat {
         WeaponCombat {
             zone: Box::new(zone),

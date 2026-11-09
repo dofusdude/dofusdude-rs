@@ -19,6 +19,7 @@ pub struct MonsterSpawnLocationSubareaMapsInner {
     pub position_x: i32,
     #[serde(rename = "position_y")]
     pub position_y: i32,
+    /// World-map context for these coordinates. Coordinates alone are not a globally unique map identifier.
     #[serde(rename = "world_map_id")]
     pub world_map_id: i32,
 }

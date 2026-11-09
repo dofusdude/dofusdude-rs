@@ -11,6 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
+/// SpellTriggers : Determines when an effect activates. Events are not additional effects to apply unconditionally. Use logic with the resolved event names and descriptions instead of parsing raw tokens.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct SpellTriggers {
     /// Original trigger tokens retained for lossless debugging.
@@ -23,6 +24,7 @@ pub struct SpellTriggers {
 }
 
 impl SpellTriggers {
+    /// Determines when an effect activates. Events are not additional effects to apply unconditionally. Use logic with the resolved event names and descriptions instead of parsing raw tokens.
     pub fn new(raw: String, events: Vec<models::SpellTrigger>) -> SpellTriggers {
         SpellTriggers {
             raw,

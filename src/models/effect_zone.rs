@@ -11,6 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
+/// EffectZone : Combat-cell area for this effect or activation context, not a geographic world area. Shape, size and inner size describe geometry. Actual affected cells can depend on position, direction and fight state. Each spell effect can have a different zone.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct EffectZone {
     /// Original compact zone encoding when the source provides one.
@@ -24,6 +25,7 @@ pub struct EffectZone {
     /// Effective inner size for hollow or minimum-size shapes. Omitted when the shape has no inner boundary.
     #[serde(rename = "min_size", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub min_size: Option<Option<i32>>,
+    /// Explicit cells for a custom-cell shape. An empty array is normal for geometric shapes such as circles and does not mean the zone affects no cells.
     #[serde(rename = "cell_ids")]
     pub cell_ids: Vec<i32>,
     #[serde(rename = "damage_decrease_step_percent", skip_serializing_if = "Option::is_none")]
@@ -41,6 +43,7 @@ pub struct EffectZone {
 }
 
 impl EffectZone {
+    /// Combat-cell area for this effect or activation context, not a geographic world area. Shape, size and inner size describe geometry. Actual affected cells can depend on position, direction and fight state. Each spell effect can have a different zone.
     pub fn new(shape: models::ZoneShape, cell_ids: Vec<i32>) -> EffectZone {
         EffectZone {
             raw: None,

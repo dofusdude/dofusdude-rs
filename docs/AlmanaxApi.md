@@ -54,7 +54,7 @@ Get a range of dates, defaults to today + 6 following days but can specified by 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **language** | **String** | code | [required] |
-**filter_left_square_bracket_bonus_type_right_square_bracket** | Option<**String**> | ids from meta/{language}/almanax/bonuses |  |
+**filter_left_square_bracket_bonus_type_right_square_bracket** | Option<**String**> | Optional bonus ID from meta/{language}/almanax/bonuses. Restricts the selected date range and can produce no results when that bonus does not occur in the range. |  |
 **range_left_square_bracket_from_right_square_bracket** | Option<**chrono::NaiveDate**> | yyyy-mm-dd |  |
 **range_left_square_bracket_to_right_square_bracket** | Option<**chrono::NaiveDate**> | yyyy-mm-dd |  |
 **range_left_square_bracket_size_right_square_bracket** | Option<**i32**> | Size of the returned range. Disable to fully use the range by setting size to -1. |  |

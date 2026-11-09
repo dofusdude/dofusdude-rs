@@ -11,13 +11,15 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
+/// MonsterDrop : A possible item drop with base rates indexed by monster grade. Final player-specific chances also depend on conditions and game modifiers.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct MonsterDrop {
     #[serde(rename = "item")]
     pub item: models::CombatReference,
-    /// Base drop percentage for each monster grade.
+    /// Base drop percentages indexed by MonsterGrade.grade, not spell grade or array position. A value of 5 means 5 percent, not 0.05 percent. These are not spawn percentages.
     #[serde(rename = "rates_percent")]
     pub rates_percent: Vec<models::MonsterDropRatesPercentInner>,
+    /// The source reports restrictions. Can be true without a complete client-side condition tree because server-only predicates are not exposed.
     #[serde(rename = "has_conditions")]
     pub has_conditions: bool,
     #[serde(rename = "drop_id", skip_serializing_if = "Option::is_none")]
@@ -35,6 +37,7 @@ pub struct MonsterDrop {
 }
 
 impl MonsterDrop {
+    /// A possible item drop with base rates indexed by monster grade. Final player-specific chances also depend on conditions and game modifiers.
     pub fn new(item: models::CombatReference, rates_percent: Vec<models::MonsterDropRatesPercentInner>, has_conditions: bool) -> MonsterDrop {
         MonsterDrop {
             item,

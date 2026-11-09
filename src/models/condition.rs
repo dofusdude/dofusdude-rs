@@ -13,12 +13,29 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Condition {
+    /// Comparison to apply to the interpreted requirement value.
     #[serde(rename = "operator", skip_serializing_if = "Option::is_none")]
     pub operator: Option<String>,
     #[serde(rename = "int_value", skip_serializing_if = "Option::is_none")]
     pub int_value: Option<i32>,
     #[serde(rename = "element", skip_serializing_if = "Option::is_none")]
     pub element: Option<Box<models::TranslatedId>>,
+    /// Interpreted requirement category, such as profession_level or item_received_age. Use this with the operator, values and references rather than decoding original condition tokens.
+    #[serde(rename = "kind", skip_serializing_if = "Option::is_none")]
+    pub kind: Option<String>,
+    /// Unit associated with the requirement value when the interpreted condition supplies one.
+    #[serde(rename = "unit", skip_serializing_if = "Option::is_none")]
+    pub unit: Option<String>,
+    #[serde(rename = "quantity", skip_serializing_if = "Option::is_none")]
+    pub quantity: Option<i32>,
+    #[serde(rename = "string_value", skip_serializing_if = "Option::is_none")]
+    pub string_value: Option<String>,
+    #[serde(rename = "value_label", skip_serializing_if = "Option::is_none")]
+    pub value_label: Option<String>,
+    #[serde(rename = "reference", skip_serializing_if = "Option::is_none")]
+    pub reference: Option<models::CombatReference>,
+    #[serde(rename = "secondary_reference", skip_serializing_if = "Option::is_none")]
+    pub secondary_reference: Option<models::CombatReference>,
 }
 
 impl Condition {
@@ -27,6 +44,13 @@ impl Condition {
             operator: None,
             int_value: None,
             element: None,
+            kind: None,
+            unit: None,
+            quantity: None,
+            string_value: None,
+            value_label: None,
+            reference: None,
+            secondary_reference: None,
         }
     }
 }

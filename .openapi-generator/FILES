@@ -87,9 +87,11 @@ docs/SetsApi.md
 docs/Spell.md
 docs/SpellEffect.md
 docs/SpellLevel.md
+docs/SpellPreviewZone.md
 docs/SpellScriptUsage.md
 docs/SpellTrigger.md
 docs/SpellTriggers.md
+docs/SpellType.md
 docs/TargetMask.md
 docs/TargetSelector.md
 docs/TranslatedId.md
@@ -99,6 +101,7 @@ docs/Weapon.md
 docs/WeaponCombat.md
 docs/WebhooksApi.md
 docs/WorldArea.md
+docs/WorldMapReference.md
 docs/ZoneShape.md
 git_push.sh
 src/apis/almanax_api.rs
@@ -190,9 +193,11 @@ src/models/rss_webhook.rs
 src/models/spell.rs
 src/models/spell_effect.rs
 src/models/spell_level.rs
+src/models/spell_preview_zone.rs
 src/models/spell_script_usage.rs
 src/models/spell_trigger.rs
 src/models/spell_triggers.rs
+src/models/spell_type.rs
 src/models/target_mask.rs
 src/models/target_selector.rs
 src/models/translated_id.rs
@@ -201,4 +206,5 @@ src/models/version.rs
 src/models/weapon.rs
 src/models/weapon_combat.rs
 src/models/world_area.rs
+src/models/world_map_reference.rs
 src/models/zone_shape.rs

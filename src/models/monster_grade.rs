@@ -11,10 +11,13 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
+/// MonsterGrade : One variant of this monster, combining combat level, statistics and spell assignments. Match grade-specific drop rates using its grade value. Do not use it to infer a spell grade.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct MonsterGrade {
+    /// Number identifying this variant within the monster. Not the combat level, array position or grade of an assigned spell.
     #[serde(rename = "grade")]
     pub grade: i32,
+    /// Combat level of this monster variant. Distinct from its grade number.
     #[serde(rename = "level")]
     pub level: i32,
     #[serde(rename = "life_points", skip_serializing_if = "Option::is_none")]
@@ -61,6 +64,7 @@ pub struct MonsterGrade {
 }
 
 impl MonsterGrade {
+    /// One variant of this monster, combining combat level, statistics and spell assignments. Match grade-specific drop rates using its grade value. Do not use it to infer a spell grade.
     pub fn new(grade: i32, level: i32, spells: Vec<models::MonsterGradeSpellsInner>) -> MonsterGrade {
         MonsterGrade {
             grade,

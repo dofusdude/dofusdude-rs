@@ -11,7 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// CombatReference : A resolved game reference used by selectors, conditions, and triggers.
+/// CombatReference : A compact resolved reference, not a complete resource. Interpret the ID in the context of the containing field. IDs in different resource types can have the same numeric value without referring to the same entity.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct CombatReference {
     #[serde(rename = "ankama_id", skip_serializing_if = "Option::is_none")]
@@ -23,7 +23,7 @@ pub struct CombatReference {
 }
 
 impl CombatReference {
-    /// A resolved game reference used by selectors, conditions, and triggers.
+    /// A compact resolved reference, not a complete resource. Interpret the ID in the context of the containing field. IDs in different resource types can have the same numeric value without referring to the same entity.
     pub fn new() -> CombatReference {
         CombatReference {
             ankama_id: None,

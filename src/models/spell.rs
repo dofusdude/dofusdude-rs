@@ -29,11 +29,16 @@ pub struct Spell {
     #[serde(rename = "image_urls", skip_serializing_if = "Option::is_none")]
     pub image_urls: Option<Box<models::Images>>,
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
-    pub r#type: Option<models::CombatReference>,
+    pub r#type: Option<Box<models::SpellType>>,
+    #[serde(rename = "base_preview_zone", skip_serializing_if = "Option::is_none")]
+    pub base_preview_zone: Option<Box<models::EffectZone>>,
+    /// Reverse references to playable classes associated with this spell. These are compact references, not complete class documents.
     #[serde(rename = "classes", skip_serializing_if = "Option::is_none")]
     pub classes: Option<Vec<models::CombatReference>>,
+    /// Reverse references to monsters associated with this spell. Use a monster's grade-specific assignments to determine which spell grade it uses.
     #[serde(rename = "monsters", skip_serializing_if = "Option::is_none")]
     pub monsters: Option<Vec<models::CombatReference>>,
+    /// Available spell grades. Despite the field name, entries are not player levels. A grade-filtered detail response contains only the requested entry while retaining the parent spell object.
     #[serde(rename = "levels")]
     pub levels: Vec<models::SpellLevel>,
     #[serde(rename = "scripts", skip_serializing_if = "Option::is_none")]
@@ -54,6 +59,7 @@ impl Spell {
             order: None,
             image_urls: None,
             r#type: None,
+            base_preview_zone: None,
             classes: None,
             monsters: None,
             levels,

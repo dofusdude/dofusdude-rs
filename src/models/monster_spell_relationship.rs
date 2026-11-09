@@ -11,13 +11,14 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
+/// MonsterSpellRelationship : Compact spell assignment inside one monster grade. The assignment's grade identifies the spell variant, not the enclosing monster variant. Follow url unchanged to retrieve it or use an include option to embed it.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct MonsterSpellRelationship {
     #[serde(rename = "ankama_id")]
     pub ankama_id: i32,
     #[serde(rename = "name")]
     pub name: String,
-    /// The spell grade assigned to this monster grade.
+    /// Grade of the assigned spell. It does not need to equal the enclosing MonsterGrade.grade.
     #[serde(rename = "grade")]
     pub grade: i32,
     /// URL for the assigned spell grade. Includes the `grade` query parameter.
@@ -28,6 +29,7 @@ pub struct MonsterSpellRelationship {
 }
 
 impl MonsterSpellRelationship {
+    /// Compact spell assignment inside one monster grade. The assignment's grade identifies the spell variant, not the enclosing monster variant. Follow url unchanged to retrieve it or use an include option to embed it.
     pub fn new(ankama_id: i32, name: String, grade: i32, url: String) -> MonsterSpellRelationship {
         MonsterSpellRelationship {
             ankama_id,

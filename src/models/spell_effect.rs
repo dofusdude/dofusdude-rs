@@ -11,20 +11,25 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
+/// SpellEffect : One normal or critical effect of a particular spell grade. Its zone defines where it applies, target_mask defines eligible targets and triggers defines activation events. Templated text is for display, not a formula to parse.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct SpellEffect {
+    /// Localized effect category, such as Air damage. This is not a spell ID or a structured game reference.
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
-    pub r#type: Option<models::CombatReference>,
+    pub r#type: Option<String>,
     #[serde(rename = "min", skip_serializing_if = "Option::is_none")]
     pub min: Option<i32>,
     #[serde(rename = "max", skip_serializing_if = "Option::is_none")]
     pub max: Option<i32>,
+    /// Effect duration in fight turns as represented by the source. Not a real-time duration in seconds.
     #[serde(rename = "duration", skip_serializing_if = "Option::is_none")]
     pub duration: Option<i32>,
+    /// Delay before the effect in fight turns as represented by the source.
     #[serde(rename = "delay", skip_serializing_if = "Option::is_none")]
     pub delay: Option<i32>,
+    /// Source random-selection value. Do not interpret it as a percentage without the effect's selection rules.
     #[serde(rename = "random", skip_serializing_if = "Option::is_none")]
-    pub random: Option<i32>,
+    pub random: Option<f64>,
     #[serde(rename = "group", skip_serializing_if = "Option::is_none")]
     pub group: Option<i32>,
     #[serde(rename = "dispellable", skip_serializing_if = "Option::is_none")]
@@ -46,11 +51,13 @@ pub struct SpellEffect {
     pub target_mask: Option<Box<models::TargetMask>>,
     #[serde(rename = "triggers", skip_serializing_if = "Option::is_none")]
     pub triggers: Option<Box<models::SpellTriggers>>,
+    /// Localized effect text suitable for display. Numeric effect properties remain available separately.
     #[serde(rename = "templated", skip_serializing_if = "Option::is_none")]
-    pub templated: Option<std::collections::HashMap<String, serde_json::Value>>,
+    pub templated: Option<String>,
 }
 
 impl SpellEffect {
+    /// One normal or critical effect of a particular spell grade. Its zone defines where it applies, target_mask defines eligible targets and triggers defines activation events. Templated text is for display, not a formula to parse.
     pub fn new() -> SpellEffect {
         SpellEffect {
             r#type: None,

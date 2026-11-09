@@ -11,6 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
+/// MonsterSpawnLocation : Known spawn subarea with its parent area, super-area and map membership. Does not assert a spawn on each listed map and does not include spawn probabilities.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct MonsterSpawnLocation {
     #[serde(rename = "subarea")]
@@ -19,14 +20,16 @@ pub struct MonsterSpawnLocation {
     pub area: models::CombatReference,
     #[serde(rename = "super_area")]
     pub super_area: models::CombatReference,
+    /// Maps belonging to the referenced subarea. Map membership alone is not proof that the monster spawns on a particular map.
     #[serde(rename = "subarea_maps")]
     pub subarea_maps: Vec<models::MonsterSpawnLocationSubareaMapsInner>,
-    /// Whether the game marks this as the monster's preferred subarea.
+    /// Whether the source marks this as a preferred subarea. A preference flag, not a spawn percentage or guarantee of presence.
     #[serde(rename = "preferred")]
     pub preferred: bool,
 }
 
 impl MonsterSpawnLocation {
+    /// Known spawn subarea with its parent area, super-area and map membership. Does not assert a spawn on each listed map and does not include spawn probabilities.
     pub fn new(subarea: models::CombatReference, area: models::CombatReference, super_area: models::CombatReference, subarea_maps: Vec<models::MonsterSpawnLocationSubareaMapsInner>, preferred: bool) -> MonsterSpawnLocation {
         MonsterSpawnLocation {
             subarea,

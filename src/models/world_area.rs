@@ -11,12 +11,28 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
+/// WorldArea : Geographic data from a super-area, area or subarea endpoint. The hierarchy is super-area to area to subarea to map. Field availability depends on the selected geographic resource. Unrelated to combat-cell effect zones.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct WorldArea {
     #[serde(rename = "ankama_id")]
     pub ankama_id: i32,
     #[serde(rename = "name")]
     pub name: String,
+    /// World-map context supplied on super-area records.
+    #[serde(rename = "world_map_id", skip_serializing_if = "Option::is_none")]
+    pub world_map_id: Option<i32>,
+    /// Child area references supplied on super-area records.
+    #[serde(rename = "areas", skip_serializing_if = "Option::is_none")]
+    pub areas: Option<Vec<models::CombatReference>>,
+    /// Suggested geographic difficulty level supplied on subarea records. Not a monster grade or the level of every monster there.
+    #[serde(rename = "level", skip_serializing_if = "Option::is_none")]
+    pub level: Option<i32>,
+    /// Dungeon association when supplied by the subarea data.
+    #[serde(rename = "dungeon_id", skip_serializing_if = "Option::is_none")]
+    pub dungeon_id: Option<i32>,
+    /// Map membership supplied on subarea records. Does not imply a spawn on every map.
+    #[serde(rename = "maps", skip_serializing_if = "Option::is_none")]
+    pub maps: Option<Vec<models::WorldMapReference>>,
     #[serde(rename = "super_area", skip_serializing_if = "Option::is_none")]
     pub super_area: Option<models::CombatReference>,
     #[serde(rename = "area", skip_serializing_if = "Option::is_none")]
@@ -28,10 +44,16 @@ pub struct WorldArea {
 }
 
 impl WorldArea {
+    /// Geographic data from a super-area, area or subarea endpoint. The hierarchy is super-area to area to subarea to map. Field availability depends on the selected geographic resource. Unrelated to combat-cell effect zones.
     pub fn new(ankama_id: i32, name: String) -> WorldArea {
         WorldArea {
             ankama_id,
             name,
+            world_map_id: None,
+            areas: None,
+            level: None,
+            dungeon_id: None,
+            maps: None,
             super_area: None,
             area: None,
             subareas: None,

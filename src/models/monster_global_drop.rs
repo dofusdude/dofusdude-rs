@@ -11,6 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
+/// MonsterGlobalDrop : A separate global-drop entry with a base percentage range. It is not the per-monster-grade rates table and does not by itself define a final player-specific drop chance.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct MonsterGlobalDrop {
     #[serde(rename = "has_conditions", skip_serializing_if = "Option::is_none")]
@@ -30,6 +31,7 @@ pub struct MonsterGlobalDrop {
 }
 
 impl MonsterGlobalDrop {
+    /// A separate global-drop entry with a base percentage range. It is not the per-monster-grade rates table and does not by itself define a final player-specific drop chance.
     pub fn new(item: models::CombatReference, min_percent: f64, max_percent: f64) -> MonsterGlobalDrop {
         MonsterGlobalDrop {
             has_conditions: None,

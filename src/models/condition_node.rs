@@ -11,6 +11,8 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
+/// ConditionNode : Client-side requirement tree. Leaf nodes contain one condition and relation nodes combine children with and or or. Preserves grouping. Not an authoritative server eligibility decision.
+/// Client-side requirement tree. Leaf nodes contain one condition and relation nodes combine children with and or or. Preserves grouping. Not an authoritative server eligibility decision.
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ConditionNode {
